@@ -1,21 +1,30 @@
-//variable to run FizzBuzz variable
-
-var FizzBuzz = function(){
-    for (var i = 1; i < 101; i++) {
-        if( i % 3 === 0 && i % 5 === 0 ) {
-            $("body").append($("<p>FizzBuzz</p>"));
-        } if( i % 3 === 0) {
-            $("body").append($("<p>Fizz</p>"));
-        } if( i % 5 === 0) {
-            $("body").append($("<p>Buzz</p>"));
-        } else {
-            $("body").append($("<p>" + i + "</p>"));
-        }
-    }
-};
-
-
+// //variable to run FizzBuzz variable
 
 $(document).ready(function(){
-    $('input').on('click', FizzBuzz);
+
+function addItem(){
+    $('#add-number').keydown(function(enter){
+        if(enter.keyCode == 13) {
+            fizzBuzz();
+        }
+    });
+}
+
+addItem();
+
+function fizzBuzz(){
+    var number = $('#add-number').val();
+
+    if(number % 3 === 0 && number % 5 === 0) {
+        $("body").append($("<p>FizzBuzz</p>"));
+    } else if(number % 3 === 0) {
+        $("body").append($("<p>Fizz</p>"));
+    } else if(number % 5 === 0) {
+        $("body").append($("<p>Buzz</p>"));
+    } else {
+        $("body").append($("<p>" + number + "</p>"));
+    }
+    $('#add-number').val('');
+}
+
 });
